@@ -10,6 +10,7 @@ interface CitySearchInputProps {
   cities: City[];
   iconColor?: string;
   className?: string;
+  variant?: 'default' | 'embedded';
 }
 
 export const CitySearchInput: React.FC<CitySearchInputProps> = ({
@@ -20,6 +21,7 @@ export const CitySearchInput: React.FC<CitySearchInputProps> = ({
   cities,
   iconColor = 'text-[#1FA3A3]',
   className = '',
+  variant = 'default',
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -50,16 +52,24 @@ export const CitySearchInput: React.FC<CitySearchInputProps> = ({
     );
   });
 
+  const isEmbedded = variant === 'embedded';
+
   return (
     <div className={`relative ${className}`} ref={containerRef}>
-      <label className="block text-xs font-medium text-stone-500 mb-1.5 mr-1">
+      <label className="block text-[11px] font-semibold text-stone-500 mb-1 mr-1">
         {label}
       </label>
       <div
         onClick={() => setIsOpen(true)}
-        className={`flex items-center justify-between w-full min-h-[50px] px-3.5 py-2.5 bg-stone-50 hover:bg-stone-100/80 border ${
-          isOpen ? 'border-[#1FA3A3] ring-2 ring-[#1FA3A3]/20' : 'border-stone-200'
-        } rounded-xl cursor-pointer transition duration-150`}
+        className={`flex items-center justify-between w-full min-h-[52px] px-3.5 py-2.5 transition duration-150 cursor-pointer ${
+          isEmbedded
+            ? `bg-stone-50/90 hover:bg-stone-100 rounded-2xl border ${
+                isOpen ? 'border-[#1FA3A3] ring-2 ring-[#1FA3A3]/20 bg-white' : 'border-stone-200/80'
+              }`
+            : `bg-stone-50 hover:bg-stone-100/80 border ${
+                isOpen ? 'border-[#1FA3A3] ring-2 ring-[#1FA3A3]/20' : 'border-stone-200'
+              } rounded-xl`
+        }`}
       >
         <div className="flex items-center gap-2.5 flex-1 min-w-0">
           <MapPin className={`w-5 h-5 flex-shrink-0 ${iconColor}`} />
@@ -95,8 +105,8 @@ export const CitySearchInput: React.FC<CitySearchInputProps> = ({
 
       {/* Dropdown with search */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-stone-200 z-50 overflow-hidden animate-fadeIn">
-          <div className="p-2.5 border-b border-stone-100">
+        <div className="absolute top-full right-0 min-w-[280px] w-full mt-2 bg-white rounded-2xl shadow-2xl border border-stone-200 z-[60] overflow-hidden animate-fadeIn">
+          <div className="p-2.5 border-b border-stone-100 bg-stone-50/50">
             <div className="relative flex items-center">
               <Search className="w-4 h-4 text-stone-400 absolute right-3 pointer-events-none" />
               <input
@@ -105,12 +115,12 @@ export const CitySearchInput: React.FC<CitySearchInputProps> = ({
                 placeholder="جست‌وجوی شهر یا استان..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="w-full pr-9 pl-3 py-2 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#1FA3A3] focus:ring-1 focus:ring-[#1FA3A3]"
+                className="w-full pr-9 pl-3 py-2 text-sm bg-white border border-stone-200 rounded-xl focus:outline-none focus:border-[#1FA3A3] focus:ring-2 focus:ring-[#1FA3A3]/20"
               />
             </div>
           </div>
 
-          <div className="max-h-60 overflow-y-auto p-1 divide-y divide-stone-50">
+          <div className="max-h-[320px] overflow-y-auto overflow-x-hidden p-1.5 divide-y divide-stone-50 scrollbar-thin">
             {filteredCities.length > 0 ? (
               filteredCities.map((city) => {
                 const isSelected = selectedCity?.id === city.id;
@@ -123,19 +133,21 @@ export const CitySearchInput: React.FC<CitySearchInputProps> = ({
                       setIsOpen(false);
                       setQuery('');
                     }}
-                    className={`w-full flex items-center justify-between px-3 py-2.5 text-right rounded-lg text-sm transition ${
+                    className={`w-full flex items-center justify-between px-3.5 py-2.5 text-right rounded-xl text-sm transition whitespace-nowrap cursor-pointer ${
                       isSelected
-                        ? 'bg-[#1FA3A3]/10 text-[#1FA3A3] font-bold'
+                        ? 'bg-[#1FA3A3]/10 text-[#0D7A7A] font-bold'
                         : 'hover:bg-stone-100 text-[#132238]'
                     }`}
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm">{city.name}</span>
+                    <span className="font-bold text-sm truncate ml-2">
+                      {city.name}
+                    </span>
+                    <div className="flex items-center gap-2 flex-shrink-0">
                       <span className="text-xs text-stone-400 font-normal">
-                        ({city.province})
+                        استان {city.province}
                       </span>
+                      {isSelected && <Check className="w-4 h-4 text-[#1FA3A3]" />}
                     </div>
-                    {isSelected && <Check className="w-4 h-4 text-[#1FA3A3]" />}
                   </button>
                 );
               })

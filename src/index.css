@@ -16,6 +16,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #F6EFE4;
+  background-image: radial-gradient(rgba(19, 34, 56, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  background-attachment: fixed;
   color: #132238;
   font-family: 'Vazirmatn', sans-serif;
   font-weight: 400;
@@ -142,4 +145,99 @@ h4 {
 
 .animate-bounce-short {
   animation: bounceShort 1.5s infinite ease-in-out;
+}
+
+/* Hero Background Dot Grid */
+.hero-dot-grid {
+  background-image: radial-gradient(rgba(19, 34, 56, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Slow Floating Animation for Hero image */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-floatSlow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+/* Staggered Floating Cards */
+.animate-floatSlow-delayed-1 {
+  animation: floatSlow 6s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.animate-floatSlow-delayed-2 {
+  animation: floatSlow 6s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* Footer Dot Grid with subtle light dots */
+.footer-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* SVG Line Dash Draw Animation (800ms) */
+@keyframes drawCurve {
+  0% {
+    stroke-dashoffset: 400;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-drawCurve {
+  stroke-dasharray: 8 6;
+  animation: drawCurve 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dashDraw {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+.animate-dashDraw {
+  stroke-dasharray: 6 6;
+  animation: dashDraw 3s linear infinite;
+}
+
+/* Slow Pulsing Pin */
+@keyframes pingSlow {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-pingSlow {
+  animation: pingSlow 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Disable all animations when user requests reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

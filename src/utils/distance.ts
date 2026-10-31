@@ -28,6 +28,40 @@ export function formatDurationPersian(totalMinutes: number): string {
   return `${toPersianDigits(hours)} ساعت و ${toPersianDigits(remainingMinutes)} دقیقه`;
 }
 
+// Calibration settings for Hero 3D map pin projection
+export const heroMapCalibration = {
+  geoBounds: {
+    minLng: 44.0,
+    maxLng: 63.5,
+    minLat: 25.0,
+    maxLat: 40.0,
+  },
+  imageBounds: {
+    minX: 12.0, // percent
+    maxX: 88.0, // percent
+    minY: 10.0, // percent (top)
+    maxY: 90.0, // percent (bottom)
+  },
+};
+
+export function calculateHeroMapPinCoords(lat: number, lng: number): { x: number; y: number } {
+  const { geoBounds, imageBounds } = heroMapCalibration;
+
+  const clampedLng = Math.max(geoBounds.minLng, Math.min(geoBounds.maxLng, lng));
+  const clampedLat = Math.max(geoBounds.minLat, Math.min(geoBounds.maxLat, lat));
+
+  const lngRatio = (clampedLng - geoBounds.minLng) / (geoBounds.maxLng - geoBounds.minLng);
+  const latRatio = (geoBounds.maxLat - clampedLat) / (geoBounds.maxLat - geoBounds.minLat); // North is top
+
+  const x = imageBounds.minX + lngRatio * (imageBounds.maxX - imageBounds.minX);
+  const y = imageBounds.minY + latRatio * (imageBounds.maxY - imageBounds.minY);
+
+  return {
+    x: Number(x.toFixed(2)),
+    y: Number(y.toFixed(2)),
+  };
+}
+
 // Great-circle Haversine distance in kilometers
 export function calculateHaversineDistance(
   lat1: number,

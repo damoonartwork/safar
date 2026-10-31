@@ -43,11 +43,20 @@ export const App: React.FC = () => {
     setOriginCity(initialOrigin);
     setDestinationCity(initialDest);
 
-    // Auto-calculate initial route
-    if (initialOrigin && initialDest && initialOrigin.id !== initialDest.id) {
-      calculateRoute(initialOrigin, initialDest, false);
-    }
+    // Initial cities set
   }, [cities]);
+
+  // Debounced auto-calculation when origin or destination changes (400ms, no auto-scroll)
+  useEffect(() => {
+    if (!originCity || !destinationCity) return;
+    if (originCity.id === destinationCity.id) return;
+
+    const timer = setTimeout(() => {
+      calculateRoute(originCity, destinationCity, false);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [originCity?.id, destinationCity?.id]);
 
   const updateUrlParams = (fromId: string, toId: string) => {
     try {
@@ -165,7 +174,10 @@ export const App: React.FC = () => {
             setDestinationCity(city);
             setValidationError(null);
           }}
-          onCalculateRoute={handleHeroCalculate}
+          onQuickRoute={(c1, c2) => {
+            setOriginCity(c1);
+            setDestinationCity(c2);
+          }}
           isLoading={isCalculating}
           validationError={validationError}
         />
