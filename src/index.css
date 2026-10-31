@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "vazirmatn/Vazirmatn-font-face.css";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-sans: 'Vazirmatn', sans-serif;
+}
+
+:root {
+  font-family: 'Vazirmatn', sans-serif;
+  color-scheme: light;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F6EFE4;
+  color: #132238;
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 400;
+  font-feature-settings: "ss01";
+  overflow-x: hidden;
+}
+
+/* Elements that do not inherit font from body */
+input,
+button,
+select,
+textarea,
+optgroup {
+  font-family: 'Vazirmatn', sans-serif !important;
+}
+
+/* Typographic weights: regular 400, subheadings 500-600, main titles 800 */
+h1,
+h2 {
+  font-weight: 800;
+}
+
+h3,
+h4 {
+  font-weight: 600;
+}
+
+/* Leaflet Container, Popup and Tooltip Styling */
+.leaflet-container,
+.leaflet-popup,
+.leaflet-popup-content,
+.leaflet-tooltip {
+  font-family: 'Vazirmatn', sans-serif !important;
+}
+
+.leaflet-popup-content {
+  font-family: 'Vazirmatn', sans-serif !important;
+  font-weight: 400;
+}
+
+/* Custom Scrollbar for horizontal lists */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #ede6da;
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #1FA3A3;
+  border-radius: 9999px;
+}
+
+/* Tile Layer Filter for site color harmony (excluding markers and route paths) */
+.leaflet-tile-pane {
+  filter: saturate(0.6) sepia(0.15) brightness(1.03);
+}
+
+@media (prefers-color-scheme: dark) {
+  .leaflet-tile-pane {
+    filter: saturate(0.6) sepia(0.15) brightness(0.82) contrast(1.15);
+  }
+}
+
+.dark .leaflet-tile-pane {
+  filter: saturate(0.6) sepia(0.15) brightness(0.82) contrast(1.15);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 1rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e2e8f0;
+}
+
+.leaflet-popup-tip {
+  background: white !important;
+}
+
+/* Custom pin icon class to prevent Leaflet default icon box overflow */
+.custom-div-pin {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scaleUp {
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bounceShort {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-bounce-short {
+  animation: bounceShort 1.5s infinite ease-in-out;
+}

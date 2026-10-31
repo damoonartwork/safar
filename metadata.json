@@ -1,0 +1,6 @@
+{
+  "name": "سفرنامه ایران - نقشه تعاملی و محاسبه‌گر سفر",
+  "description": "نقشه تعاملی ایران، محاسبه فاصله و زمان سفر، مسیرهای جاده‌ای، هزینه سوخت و سفر چند مقصدی",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
