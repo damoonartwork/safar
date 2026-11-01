@@ -87,11 +87,7 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-between overflow-hidden pt-4 pb-8 lg:py-10">
-      
-      {/* Soft Ambient Color Glows (Hero only) */}
-      <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-gradient-to-bl from-[#1FA3A3]/15 via-[#1FA3A3]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 left-0 w-[450px] h-[450px] bg-gradient-to-tr from-[#F26A51]/15 via-[#F26A51]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+    <section className="relative z-20 min-h-[90vh] flex flex-col justify-between pt-4 pb-8 lg:py-10">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -262,10 +258,6 @@ export const Hero: React.FC<HeroProps> = ({
 
           {/* Left Column (in RTL): Hero Visual on Desktop (50% width) */}
           <div className="hidden lg:flex lg:col-span-6 xl:col-span-6 justify-center items-center relative">
-            
-            {/* Glowing Soft Backdrop */}
-            <div className="absolute inset-0 max-w-lg mx-auto bg-gradient-to-tr from-[#1FA3A3]/20 via-[#F6EFE4]/30 to-[#F26A51]/20 rounded-full blur-3xl pointer-events-none -z-10" />
-
             {/* Outer Wrapper Hosting Floating Cards so they are NOT clipped */}
             <div className="relative w-full max-w-2xl select-none">
               
