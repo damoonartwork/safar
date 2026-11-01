@@ -132,7 +132,7 @@ export const App: React.FC = () => {
 
   if (citiesLoading) {
     return (
-      <div className="min-h-screen bg-[#F6EFE4] flex flex-col items-center justify-center p-4">
+      <div className="min-h-screen flex flex-col items-center justify-center p-4">
         <div className="w-12 h-12 border-4 border-[#1FA3A3] border-t-transparent rounded-full animate-spin mb-4" />
         <span className="text-base font-bold text-[#132238]">در حال بارگذاری اطلاعات شهرهای ایران...</span>
       </div>
@@ -141,7 +141,7 @@ export const App: React.FC = () => {
 
   if (citiesError) {
     return (
-      <div className="min-h-screen bg-[#F6EFE4] flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="bg-white p-8 rounded-3xl shadow-xl max-w-md text-center border border-stone-200">
           <p className="text-rose-600 font-bold mb-4">{citiesError}</p>
           <button
@@ -156,7 +156,7 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F6EFE4] text-[#132238] font-sans selection:bg-[#1FA3A3] selection:text-white" dir="rtl">
+    <div className="min-h-screen flex flex-col text-[#132238] font-sans selection:bg-[#1FA3A3] selection:text-white" dir="rtl">
       {/* 1. Sticky Header */}
       <Header />
 

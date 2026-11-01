@@ -11,19 +11,30 @@
   color-scheme: light;
 }
 
-html,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: #F6EFE4;
-  background-image: radial-gradient(rgba(19, 34, 56, 0.08) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
-  background-attachment: fixed;
+  background-image: radial-gradient(rgba(19, 34, 56, 0.07) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+  background-position: 0 0;
   color: #132238;
   font-family: 'Vazirmatn', sans-serif;
   font-weight: 400;
   font-feature-settings: "ss01";
   overflow-x: hidden;
+}
+
+@media (max-width: 640px) {
+  body {
+    background-size: 18px 18px;
+  }
 }
 
 /* Elements that do not inherit font from body */
@@ -180,8 +191,8 @@ h4 {
 
 /* Footer Dot Grid with subtle light dots */
 .footer-dot-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1.4px);
+  background-size: 22px 22px;
 }
 
 /* SVG Line Dash Draw Animation (800ms) */
