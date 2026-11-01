@@ -4,6 +4,7 @@ interface SmartImageProps {
   src: string;
   alt: string;
   className?: string;
+  style?: React.CSSProperties;
   type?: 'city' | 'car' | 'bus' | 'train' | 'airplane' | 'hero' | 'trip' | 'pump' | 'landmark';
   title?: string;
   subtitle?: string;
@@ -13,6 +14,7 @@ export const SmartImage: React.FC<SmartImageProps> = ({
   src,
   alt,
   className = '',
+  style,
   type = 'city',
   title,
   subtitle,
@@ -23,7 +25,7 @@ export const SmartImage: React.FC<SmartImageProps> = ({
     return (
       <div
         className={`relative overflow-hidden flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[#1FA3A3]/10 via-[#F6EFE4] to-[#F26A51]/15 text-[#132238] select-none ${className}`}
-        style={{ minHeight: '120px' }}
+        style={{ minHeight: '120px', ...style }}
         role="img"
         aria-label={alt}
       >
@@ -99,7 +101,8 @@ export const SmartImage: React.FC<SmartImageProps> = ({
       alt={alt}
       loading="lazy"
       onError={() => setHasError(true)}
-      className={`transition-opacity duration-300 object-cover ${className}`}
+      style={style}
+      className={`transition-opacity duration-300 ${/object-(cover|contain)/.test(className) ? '' : 'object-cover'} ${className}`}
     />
   );
 };

@@ -143,12 +143,12 @@ export const FuelCalculator: React.FC<FuelCalculatorProps> = ({ routeData }) => 
             {/* Side 2 (Left in RTL): Gas pump visual & Large total cost */}
             <div className="lg:col-span-5 flex flex-col items-center justify-center bg-gradient-to-br from-[#1FA3A3]/5 via-[#F6EFE4] to-[#F26A51]/10 rounded-3xl p-6 sm:p-8 border border-stone-200/80 text-center order-1 lg:order-2">
               
-              <div className="w-28 h-28 mb-4 rounded-3xl bg-white p-3 shadow-md flex items-center justify-center border border-stone-100">
+              <div className="w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] mb-4 rounded-3xl overflow-hidden">
                 <SmartImage
                   src="/images/pump.png"
                   alt="پمپ بنزین"
                   type="pump"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
 

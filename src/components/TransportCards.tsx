@@ -110,13 +110,12 @@ export const TransportCards: React.FC<TransportCardsProps> = ({ routeData }) => 
             >
               <div>
                 {/* Image / Illustration */}
-                <div className="rounded-2xl overflow-hidden mb-4 bg-stone-50 h-32 flex items-center justify-center border border-stone-100">
+                <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden mb-4 group">
                   <SmartImage
                     src={card.imageSrc}
                     alt={card.name}
                     type={card.type}
-                    title={card.name}
-                    className="w-full h-full object-contain p-2"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
 
