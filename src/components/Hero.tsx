@@ -103,8 +103,7 @@ export const Hero: React.FC<HeroProps> = ({
                 src="/images/hero.png"
                 alt="نقشه سه‌بعدی ایران"
                 loading="eager"
-                // @ts-expect-error fetchpriority attribute
-                fetchpriority="high"
+                fetchPriority="high"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -277,8 +276,7 @@ export const Hero: React.FC<HeroProps> = ({
                   src="/images/hero.png"
                   alt="نقشه سه‌بعدی تعاملی ایران"
                   loading="eager"
-                  // @ts-expect-error fetchpriority attribute
-                  fetchpriority="high"
+                  fetchPriority="high"
                   className="w-full h-auto object-cover block pointer-events-none"
                 />
 

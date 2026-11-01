@@ -31,7 +31,7 @@ export const RouteResult: React.FC<RouteResultProps> = ({
   };
 
   return (
-    <section id="route-result-section" className="py-8 scroll-mt-24">
+    <section id="route-result-section" className="pt-1 pb-8 sm:pt-2 sm:pb-8 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Route Header & Copy Link */}
