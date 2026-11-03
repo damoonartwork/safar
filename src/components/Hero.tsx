@@ -94,7 +94,7 @@ export const Hero: React.FC<HeroProps> = ({
           
           {/* Mobile Image: Shown on screens < 1024px, 24px border-radius */}
           <div className="lg:hidden w-full flex justify-center -mb-2">
-            <div className="relative w-full max-w-md h-[210px] overflow-hidden rounded-[24px] shadow-lg border border-white/80 dark:border-white/10 bg-stone-100 dark:bg-[#172634]">
+            <div className="relative w-full max-w-md h-[210px] overflow-hidden rounded-[24px] shadow-lg border border-white/80 dark:border-white/10 bg-stone-100 dark:bg-[#0F1419] hero-map-frame">
               <img
                 src="/images/hero.png"
                 alt="نقشه سه‌بعدی ایران"
@@ -262,7 +262,7 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="relative w-full max-w-2xl select-none">
               
               {/* Clipped Map Container: rounded 32px with overflow-hidden */}
-              <div className="relative rounded-[32px] overflow-hidden shadow-2xl shadow-stone-400/35 dark:shadow-black/70 border border-white/60 dark:border-white/10 bg-stone-100 dark:bg-[#172634] animate-floatSlow">
+              <div className="relative rounded-[32px] overflow-hidden shadow-2xl shadow-stone-400/35 border border-white/60 dark:border-white/10 bg-stone-100 dark:bg-[#0F1419] animate-floatSlow hero-map-frame">
                 
                 <img
                   src="/images/hero.png"
@@ -303,13 +303,13 @@ export const Hero: React.FC<HeroProps> = ({
                     title={`${originCity.name} (مبدأ)`}
                   >
                     <div className="relative flex items-center justify-center">
-                      <span className="absolute w-6 h-6 rounded-full bg-[#10B981] animate-pingSlow opacity-75"></span>
+                      <span className="absolute w-6 h-6 rounded-full bg-[#10B981] animate-pingSlow opacity-75 shadow-[0_0_16px_rgba(16,185,129,0.6)]"></span>
                       <div className="relative w-4 h-4 rounded-full bg-[#10B981] border-2 border-white shadow-md flex items-center justify-center">
                         <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
                       </div>
                     </div>
                     {/* City Name Label */}
-                    <span className="absolute -top-6 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-[#132238]/90 dark:bg-[#172634]/95 text-white dark:text-[#F1EADF] text-[10px] font-bold shadow-md whitespace-nowrap pointer-events-none">
+                    <span className="absolute -top-6 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-[#132238]/90 dark:bg-[#0F1419]/95 text-white dark:text-[#F1EADF] text-[10px] font-bold shadow-md whitespace-nowrap pointer-events-none">
                       {originCity.name}
                     </span>
                   </div>
@@ -327,7 +327,7 @@ export const Hero: React.FC<HeroProps> = ({
                     title={`${destinationCity.name} (مقصد)`}
                   >
                     <div className="relative flex items-center justify-center">
-                      <span className="absolute w-6 h-6 rounded-full bg-[#F26A51] dark:bg-[#FF7A5C] animate-pingSlow opacity-75"></span>
+                      <span className="absolute w-6 h-6 rounded-full bg-[#F26A51] dark:bg-[#FF7A5C] animate-pingSlow opacity-75 shadow-[0_0_16px_rgba(255,122,92,0.6)]"></span>
                       <div className="relative w-4 h-4 rounded-full bg-[#F26A51] dark:bg-[#FF7A5C] border-2 border-white shadow-md flex items-center justify-center">
                         <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
                       </div>
@@ -342,35 +342,35 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               {/* Floating Card 1: ۳۱ استان (OUTSIDE clipped container) */}
-              <div className="absolute -top-4 -right-4 backdrop-blur-md bg-white/85 dark:bg-[#172634]/90 border border-white/80 dark:border-white/10 shadow-xl dark:shadow-black/60 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-xs font-bold text-[#132238] dark:text-[#F1EADF] animate-floatSlow z-30 hover:scale-105 transition-transform duration-300">
-                <div className="w-7 h-7 rounded-xl bg-teal-100/90 dark:bg-[#1E3142] text-[#0D7A7A] dark:text-[#2EC4C1] flex items-center justify-center">
+              <div className="absolute -top-4 -right-4 backdrop-blur-md bg-white/85 dark:bg-[#0F1419]/90 border border-white/80 dark:border-white/10 shadow-xl hero-floating-card px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-xs font-bold text-[#132238] dark:text-[#F1EADF] animate-floatSlow z-30 hover:scale-105 transition-transform duration-300">
+                <div className="w-7 h-7 rounded-xl bg-teal-100/90 dark:bg-[#161D24] text-[#0D7A7A] dark:text-[#2EC4C1] flex items-center justify-center">
                   <Layers className="w-4 h-4" />
                 </div>
                 <div className="text-right">
                   <span className="block text-[#132238] dark:text-[#F1EADF]">۳۱ استان</span>
-                  <span className="text-[10px] text-stone-500 dark:text-[#9FB0BF] font-normal">پوشش سراسری</span>
+                  <span className="text-[10px] text-stone-500 dark:text-[#8A97A4] font-normal">پوشش سراسری</span>
                 </div>
               </div>
 
               {/* Floating Card 2: +۵۰ شهر (OUTSIDE clipped container) */}
-              <div className="absolute top-[60%] -right-6 backdrop-blur-md bg-white/85 dark:bg-[#172634]/90 border border-white/80 dark:border-white/10 shadow-xl dark:shadow-black/60 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-xs font-bold text-[#132238] dark:text-[#F1EADF] animate-floatSlow-delayed-1 z-30 hover:scale-105 transition-transform duration-300">
-                <div className="w-7 h-7 rounded-xl bg-emerald-100/90 dark:bg-[#1E3142] text-emerald-700 dark:text-emerald-400 flex items-center justify-center">
+              <div className="absolute top-[60%] -right-6 backdrop-blur-md bg-white/85 dark:bg-[#0F1419]/90 border border-white/80 dark:border-white/10 shadow-xl hero-floating-card px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-xs font-bold text-[#132238] dark:text-[#F1EADF] animate-floatSlow-delayed-1 z-30 hover:scale-105 transition-transform duration-300">
+                <div className="w-7 h-7 rounded-xl bg-emerald-100/90 dark:bg-[#161D24] text-emerald-700 dark:text-emerald-400 flex items-center justify-center">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div className="text-right">
                   <span className="block text-[#132238] dark:text-[#F1EADF]">+۵۰ شهر</span>
-                  <span className="text-[10px] text-stone-500 dark:text-[#9FB0BF] font-normal">جاذبه‌ها و سوغات</span>
+                  <span className="text-[10px] text-stone-500 dark:text-[#8A97A4] font-normal">جاذبه‌ها و سوغات</span>
                 </div>
               </div>
 
               {/* Floating Card 3: ۴ روش سفر (OUTSIDE clipped container) */}
-              <div className="absolute -bottom-4 left-6 backdrop-blur-md bg-white/85 dark:bg-[#172634]/90 border border-white/80 dark:border-white/10 shadow-xl dark:shadow-black/60 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-xs font-bold text-[#132238] dark:text-[#F1EADF] animate-floatSlow-delayed-2 z-30 hover:scale-105 transition-transform duration-300">
-                <div className="w-7 h-7 rounded-xl bg-orange-100/90 dark:bg-[#1E3142] text-[#F26A51] dark:text-[#FF7A5C] flex items-center justify-center">
+              <div className="absolute -bottom-4 left-6 backdrop-blur-md bg-white/85 dark:bg-[#0F1419]/90 border border-white/80 dark:border-white/10 shadow-xl hero-floating-card px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-xs font-bold text-[#132238] dark:text-[#F1EADF] animate-floatSlow-delayed-2 z-30 hover:scale-105 transition-transform duration-300">
+                <div className="w-7 h-7 rounded-xl bg-orange-100/90 dark:bg-[#161D24] text-[#F26A51] dark:text-[#FF7A5C] flex items-center justify-center">
                   <Navigation className="w-4 h-4" />
                 </div>
                 <div className="text-right">
                   <span className="block text-[#132238] dark:text-[#F1EADF]">۴ روش سفر</span>
-                  <span className="text-[10px] text-stone-500 dark:text-[#9FB0BF] font-normal">ماشین، قطار، پرواز...</span>
+                  <span className="text-[10px] text-stone-500 dark:text-[#8A97A4] font-normal">ماشین، قطار، پرواز...</span>
                 </div>
               </div>
 

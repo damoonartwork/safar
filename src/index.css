@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "vazirmatn/Vazirmatn-font-face.css";
 @import "leaflet/dist/leaflet.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -11,10 +10,32 @@
 :root {
   font-family: 'Vazirmatn', sans-serif;
   color-scheme: light;
+  --bg-page: #F6EFE4;
+  --bg-card: #FFFFFF;
+  --bg-surface: #F8F9FA;
+  --bg-surface-hover: #F1F3F5;
+  --border-card: rgba(19, 34, 56, 0.08);
+  --text-main: #132238;
+  --text-muted: #6B7280;
+  --color-turquoise: #1FA3A3;
+  --color-coral: #F26A51;
+  --bg-dots: rgba(19, 34, 56, 0.07);
+  --bg-footer: #132238;
 }
 
 .dark {
   color-scheme: dark;
+  --bg-page: #07090C;
+  --bg-card: #0F1419;
+  --bg-surface: #161D24;
+  --bg-surface-hover: #1C252E;
+  --border-card: rgba(255, 255, 255, 0.07);
+  --text-main: #F1EADF;
+  --text-muted: #8A97A4;
+  --color-turquoise: #2EC4C1;
+  --color-coral: #FF7A5C;
+  --bg-dots: rgba(255, 255, 255, 0.045);
+  --bg-footer: #040608;
 }
 
 html {
@@ -26,11 +47,11 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #F6EFE4;
-  background-image: radial-gradient(rgba(19, 34, 56, 0.07) 1px, transparent 1.4px);
+  background-color: var(--bg-page);
+  background-image: radial-gradient(var(--bg-dots) 1px, transparent 1.4px);
   background-size: 22px 22px;
   background-position: 0 0;
-  color: #132238;
+  color: var(--text-main);
   font-family: 'Vazirmatn', sans-serif;
   font-weight: 400;
   font-feature-settings: "ss01";
@@ -39,23 +60,76 @@ body {
 }
 
 .dark body {
-  background-color: #0F1A24;
-  background-image: radial-gradient(rgba(241, 234, 223, 0.05) 1px, transparent 1.4px);
-  color: #F1EADF;
+  background-color: var(--bg-page);
+  background-image: radial-gradient(var(--bg-dots) 1px, transparent 1.4px);
+  color: var(--text-main);
 }
 
 /* ==========================================================================
-   Dark Mode Shadow System:
-   In dark mode, shadows must NEVER be light, white, or light stone-colored.
-   All shadows in dark mode are deep pitch-black tones with real depth.
+   Dark Mode Palette & Surface Mappings:
+   - Page background: #07090C
+   - Cards & panels: #0F1419
+   - Internal surfaces (fields, info boxes, menus): #161D24
+   - Hover on surfaces: #1C252E
+   - Card border: rgba(255, 255, 255, 0.07)
+   - Main text: #F1EADF, Muted text: #8A97A4
+   - Footer: #040608
    ========================================================================== */
+
+.dark [class*="dark:bg-[#172634]"],
+.dark [class*="dark:bg-[#0F1A24]"],
+.dark .card-dark {
+  background-color: var(--bg-card) !important;
+}
+
+.dark [class*="dark:bg-[#1E3142]"],
+.dark .surface-dark {
+  background-color: var(--bg-surface) !important;
+}
+
+.dark [class*="dark:hover:bg-[#1E3142]"]:hover,
+.dark [class*="dark:hover:bg-[#253d52]"]:hover,
+.dark .surface-hover-dark:hover {
+  background-color: var(--bg-surface-hover) !important;
+}
+
+.dark [class*="dark:text-[#9FB0BF]"],
+.dark .text-muted-dark {
+  color: var(--text-muted) !important;
+}
+
+.dark [class*="dark:border-white/10"] {
+  border-color: var(--border-card) !important;
+}
+
+.dark header {
+  background-color: rgba(7, 9, 12, 0.88) !important;
+  border-bottom-color: var(--border-card) !important;
+}
+
+.dark footer,
+.dark [class*="dark:bg-[#0A131B]"] {
+  background-color: var(--bg-footer) !important;
+  border-top-color: var(--border-card) !important;
+}
+
+/* ==========================================================================
+   Dark Mode Shadows:
+   - Cards: 0 0 0 1px rgba(255,255,255,0.06), 0 24px 60px -12px rgba(0,0,0,0.75)
+            + inset 0 1px 0 rgba(255,255,255,0.05)
+   - Hero floating cards & dropdown: 0 0 0 1px rgba(255,255,255,0.08), 0 30px 80px -10px rgba(0,0,0,0.85)
+   - Coral CTA & pins glow: 0 8px 24px -6px rgba(255,122,92,0.45)
+   - Active field (focus): thin turquoise ring rgba(46,196,193,0.35)
+   - Hero map image: brightness(0.9) and shadow 0 30px 80px -20px rgba(0,0,0,0.9)
+   ========================================================================== */
+
 .dark,
 .dark body {
-  --tw-shadow-color: rgba(0, 0, 0, 0.65) !important;
+  --tw-shadow-color: rgba(0, 0, 0, 0.75) !important;
 }
 
 .dark * {
-  --tw-shadow-color: rgba(0, 0, 0, 0.65);
+  --tw-shadow-color: rgba(0, 0, 0, 0.75);
 }
 
 .dark [class*="shadow-stone-"],
@@ -63,51 +137,74 @@ body {
 .dark [class*="shadow-slate-"],
 .dark [class*="shadow-gray-"],
 .dark [class*="shadow-zinc-"] {
-  --tw-shadow-color: rgba(0, 0, 0, 0.65) !important;
+  --tw-shadow-color: rgba(0, 0, 0, 0.75) !important;
 }
 
 .dark .shadow-sm {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.6) !important;
 }
 
 .dark .shadow {
-  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.6), 0 1px 3px -1px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.7) !important;
 }
 
 .dark .shadow-md {
-  box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.7), 0 3px 6px -3px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 6px 14px -2px rgba(0, 0, 0, 0.75) !important;
 }
 
 .dark .shadow-lg {
-  box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.75), 0 6px 12px -4px rgba(0, 0, 0, 0.65) !important;
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.8) !important;
 }
 
-.dark .shadow-xl {
-  box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.8), 0 10px 15px -5px rgba(0, 0, 0, 0.7) !important;
-}
-
-.dark .shadow-2xl {
-  box-shadow: 0 28px 55px -10px rgba(0, 0, 0, 0.85), 0 12px 20px -6px rgba(0, 0, 0, 0.75) !important;
+.dark .shadow-xl,
+.dark .shadow-2xl,
+.dark .card-dark,
+.dark #route-calculator {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 24px 60px -12px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
 }
 
 .dark .shadow-inner {
-  box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.7) !important;
+  box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.8) !important;
 }
 
-.dark .hover\:shadow-xl:hover {
-  box-shadow: 0 25px 45px -6px rgba(0, 0, 0, 0.85), 0 12px 18px -6px rgba(0, 0, 0, 0.75) !important;
+/* Floating cards & Dropdown menu shadow */
+.city-dropdown-menu {
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(19, 34, 56, 0.06), 0 20px 40px -8px rgba(19, 34, 56, 0.12);
+  border-radius: 16px;
 }
 
-.dark .hover\:shadow:hover {
-  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.65) !important;
+.dark .city-dropdown-menu {
+  background-color: #161D24 !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 30px 80px -10px rgba(0, 0, 0, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
 }
 
-.dark .drop-shadow-sm {
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6)) !important;
+.dark .hero-floating-card {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 30px 80px -10px rgba(0, 0, 0, 0.85) !important;
 }
 
-.dark .drop-shadow-md {
-  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.7)) !important;
+/* Coral CTA button & pin glow */
+.dark a[href="#route-calculator"].coral-cta-glow,
+.dark .coral-cta-glow {
+  box-shadow: 0 8px 24px -6px rgba(255, 122, 92, 0.45) !important;
+}
+
+/* Active field focus */
+.dark .field-active-ring,
+.dark input:focus,
+.dark textarea:focus {
+  box-shadow: 0 0 0 2px rgba(46, 196, 193, 0.35) !important;
+  border-color: rgba(46, 196, 193, 0.5) !important;
+}
+
+/* Hero Map Image in Dark Mode: brightness(0.9) and shadow 0 30px 80px -20px rgba(0,0,0,0.9) */
+.dark .hero-map-frame {
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
+}
+.dark .hero-map-frame img {
+  filter: brightness(0.9) !important;
 }
 
 @media (max-width: 640px) {
@@ -169,10 +266,10 @@ h4 {
   border-radius: 9999px;
 }
 
-/* City Dropdown Thin Scrollbar (4px, light gray, rounded, subtle hover) */
+/* City Dropdown Thin Scrollbar (4px, rgba(127,127,127,0.25), rounded, no arrows) */
 .city-dropdown-scroll {
   scrollbar-width: thin;
-  scrollbar-color: rgba(19, 34, 56, 0.15) transparent;
+  scrollbar-color: rgba(127, 127, 127, 0.25) transparent;
 }
 .city-dropdown-scroll::-webkit-scrollbar {
   width: 4px;
@@ -181,37 +278,36 @@ h4 {
   background: transparent;
 }
 .city-dropdown-scroll::-webkit-scrollbar-thumb {
-  background: rgba(19, 34, 56, 0.15);
+  background: rgba(127, 127, 127, 0.25);
   border-radius: 9999px;
   transition: background-color 0.15s ease;
 }
 .city-dropdown-scroll:hover::-webkit-scrollbar-thumb,
 .city-dropdown-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(19, 34, 56, 0.35);
+  background: rgba(127, 127, 127, 0.45);
+}
+.city-dropdown-scroll::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
-.dark .scrollbar-thin::-webkit-scrollbar-track {
-  background: #1E3142;
-}
-.dark .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #2EC4C1;
-}
 .dark .city-dropdown-scroll {
-  scrollbar-color: rgba(241, 234, 223, 0.2) transparent;
+  scrollbar-color: rgba(127, 127, 127, 0.25) transparent;
 }
 .dark .city-dropdown-scroll::-webkit-scrollbar-thumb {
-  background: rgba(241, 234, 223, 0.2);
+  background: rgba(127, 127, 127, 0.25);
 }
 .dark .city-dropdown-scroll:hover::-webkit-scrollbar-thumb,
 .dark .city-dropdown-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(241, 234, 223, 0.4);
+  background: rgba(127, 127, 127, 0.45);
 }
 
-/* City Dropdown Menu Animations */
+/* City Dropdown Menu Animations: opacity from 0, translateY from -4px, 150ms */
 @keyframes menuDropdownDown {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-4px);
   }
   to {
     opacity: 1;
@@ -222,7 +318,7 @@ h4 {
 @keyframes menuDropdownUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
@@ -231,11 +327,11 @@ h4 {
 }
 
 .animate-menuDropdownDown {
-  animation: menuDropdownDown 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: menuDropdownDown 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-menuDropdownUp {
-  animation: menuDropdownUp 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: menuDropdownUp 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes itemCascadeFade {

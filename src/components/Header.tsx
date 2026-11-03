@@ -80,7 +80,7 @@ export const Header: React.FC = () => {
             {/* Desktop CTA Button */}
             <a
               href="#route-calculator"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#F26A51] hover:bg-[#e0563d] dark:bg-[#FF7A5C] dark:hover:bg-[#f26545] text-white text-sm font-bold rounded-2xl shadow-md shadow-[#F26A51]/25 hover:shadow-lg transition-all duration-200 active:scale-95"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#F26A51] hover:bg-[#e0563d] dark:bg-[#FF7A5C] dark:hover:bg-[#f26545] text-white text-sm font-bold rounded-2xl shadow-md shadow-[#F26A51]/25 hover:shadow-lg transition-all duration-200 active:scale-95 coral-cta-glow"
             >
               <span>شروع سفر</span>
               <ArrowLeft className="w-4 h-4" />
@@ -116,7 +116,7 @@ export const Header: React.FC = () => {
             <a
               href="#route-calculator"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-3 bg-[#F26A51] hover:bg-[#e0563d] dark:bg-[#FF7A5C] dark:hover:bg-[#f26545] text-white font-bold rounded-xl text-center shadow-md"
+              className="w-full flex items-center justify-center gap-2 py-3 bg-[#F26A51] hover:bg-[#e0563d] dark:bg-[#FF7A5C] dark:hover:bg-[#f26545] text-white font-bold rounded-xl text-center shadow-md coral-cta-glow"
             >
               <span>شروع سفر</span>
               <ArrowLeft className="w-4 h-4" />
