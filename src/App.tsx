@@ -58,17 +58,6 @@ export const App: React.FC = () => {
     return () => clearTimeout(timer);
   }, [originCity?.id, destinationCity?.id]);
 
-  const updateUrlParams = (fromId: string, toId: string) => {
-    try {
-      const url = new URL(window.location.href);
-      url.searchParams.set('from', fromId);
-      url.searchParams.set('to', toId);
-      window.history.replaceState({}, '', url.toString());
-    } catch {
-      // URL replacement fallback
-    }
-  };
-
   const calculateRoute = async (
     origin: City,
     dest: City,
@@ -85,7 +74,6 @@ export const App: React.FC = () => {
     try {
       const data = await calculateRouteData(origin, dest);
       setRouteData(data);
-      updateUrlParams(origin.id, dest.id);
 
       if (shouldScroll) {
         setTimeout(() => {
