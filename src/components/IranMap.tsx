@@ -287,7 +287,7 @@ export const IranMap: React.FC<IranMapProps> = ({
   return (
     <div
       dir="ltr"
-      className={`relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-inner border border-stone-200/70 bg-[#eef2f5] z-0 ${className}`}
+      className={`relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-inner border border-stone-200/70 dark:border-white/10 bg-[#eef2f5] dark:bg-[#0F1A24] z-0 ${className}`}
       style={{ height }}
     >
       <div ref={mapContainerRef} className="w-full h-full" />

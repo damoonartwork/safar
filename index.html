@@ -21,8 +21,23 @@
     <meta name="twitter:image" content="/images/og.png" />
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231FA3A3'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'/></svg>" />
+
+    <!-- Inline script to prevent theme flash before React loads -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-[#F6EFE4] text-[#1E293B] antialiased min-h-screen selection:bg-[#1FA3A3] selection:text-white">
+  <body class="bg-[#F6EFE4] dark:bg-[#0F1A24] text-[#132238] dark:text-[#F1EADF] antialiased min-h-screen selection:bg-[#1FA3A3] dark:selection:bg-[#2EC4C1] selection:text-white transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -20,10 +20,10 @@ export const TransportCards: React.FC<TransportCardsProps> = ({ routeData }) => 
       available: true,
       duration: travelModes.car.durationMinutes,
       badge: 'انعطاف‌پذیرترین',
-      badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      badgeColor: 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/40',
       extraInfo: (
-        <div className="flex items-center gap-1.5 text-xs text-stone-600 bg-stone-100/70 p-2 rounded-xl mt-3">
-          <Fuel className="w-4 h-4 text-[#1FA3A3] flex-shrink-0" />
+        <div className="flex items-center gap-1.5 text-xs text-stone-600 dark:text-[#9FB0BF] bg-stone-100/70 dark:bg-[#1E3142] p-2 rounded-xl mt-3">
+          <Fuel className="w-4 h-4 text-[#1FA3A3] dark:text-[#2EC4C1] flex-shrink-0" />
           <span>
             سوخت تخمینی: {formatPersianNumber(travelModes.car.fuelConsumptionLiters)} لیتر
           </span>
@@ -38,9 +38,9 @@ export const TransportCards: React.FC<TransportCardsProps> = ({ routeData }) => 
       available: true,
       duration: travelModes.bus.durationMinutes,
       badge: 'اقتصادی و همگانی',
-      badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
+      badgeColor: 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/40',
       extraInfo: (
-        <div className="text-[11px] text-stone-500 bg-stone-100/70 p-2 rounded-xl mt-3">
+        <div className="text-[11px] text-stone-500 dark:text-[#9FB0BF] bg-stone-100/70 dark:bg-[#1E3142] p-2 rounded-xl mt-3">
           با احتساب توقف در مجتمع‌های بین‌راهی
         </div>
       ),
@@ -55,10 +55,10 @@ export const TransportCards: React.FC<TransportCardsProps> = ({ routeData }) => 
       reasonDisabled: travelModes.train.reasonDisabled,
       badge: travelModes.train.available ? 'آرامش و امنیت' : 'فاقد شبکه ریلی مستقیم',
       badgeColor: travelModes.train.available
-        ? 'bg-amber-50 text-amber-700 border-amber-200'
-        : 'bg-stone-200 text-stone-500 border-stone-300',
+        ? 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/40'
+        : 'bg-stone-200 dark:bg-[#1E3142] text-stone-500 dark:text-[#9FB0BF] border-stone-300 dark:border-white/10',
       extraInfo: travelModes.train.available ? (
-        <div className="text-[11px] text-stone-500 bg-stone-100/70 p-2 rounded-xl mt-3">
+        <div className="text-[11px] text-stone-500 dark:text-[#9FB0BF] bg-stone-100/70 dark:bg-[#1E3142] p-2 rounded-xl mt-3">
           حرکت روی خطوط سراسری راه‌آهن
         </div>
       ) : null,
@@ -73,10 +73,10 @@ export const TransportCards: React.FC<TransportCardsProps> = ({ routeData }) => 
       reasonDisabled: travelModes.airplane.reasonDisabled,
       badge: travelModes.airplane.available ? 'سریع‌ترین راه' : 'فاقد فرودگاه فعال',
       badgeColor: travelModes.airplane.available
-        ? 'bg-teal-50 text-[#0D7A7A] border-teal-200'
-        : 'bg-stone-200 text-stone-500 border-stone-300',
+        ? 'bg-teal-50 dark:bg-teal-950/60 text-[#0D7A7A] dark:text-[#2EC4C1] border-teal-200 dark:border-teal-800/40'
+        : 'bg-stone-200 dark:bg-[#1E3142] text-stone-500 dark:text-[#9FB0BF] border-stone-300 dark:border-white/10',
       extraInfo: travelModes.airplane.available ? (
-        <div className="text-[11px] text-stone-500 bg-stone-100/70 p-2 rounded-xl mt-3">
+        <div className="text-[11px] text-stone-500 dark:text-[#9FB0BF] bg-stone-100/70 dark:bg-[#1E3142] p-2 rounded-xl mt-3">
           شامل زمان پرواز و ۳۰ دقیقه مانور فرودگاه
         </div>
       ) : null,
@@ -89,10 +89,10 @@ export const TransportCards: React.FC<TransportCardsProps> = ({ routeData }) => 
         
         {/* Section Heading */}
         <div className="text-center md:text-right mb-6">
-          <h3 className="text-2xl sm:text-3xl font-black text-[#132238] mb-1">
+          <h3 className="text-2xl sm:text-3xl font-black text-[#132238] dark:text-[#F1EADF] mb-1">
             چطور می‌خواهید سفر کنید؟
           </h3>
-          <p className="text-sm text-stone-600">
+          <p className="text-sm text-stone-600 dark:text-[#9FB0BF]">
             مقایسه گزینه‌های مختلف سفر بین {routeData.origin.name} و {routeData.destination.name} و زمان‌بندی هر کدام
           </p>
         </div>
@@ -104,8 +104,8 @@ export const TransportCards: React.FC<TransportCardsProps> = ({ routeData }) => 
               key={card.id}
               className={`rounded-3xl p-5 border transition-all duration-300 flex flex-col justify-between ${
                 card.available
-                  ? 'bg-white border-stone-200 shadow-lg shadow-stone-200/50 hover:shadow-xl hover:-translate-y-1'
-                  : 'bg-stone-100/70 border-dashed border-stone-300 opacity-75'
+                  ? 'bg-white dark:bg-[#172634] border-stone-200 dark:border-white/10 shadow-lg shadow-stone-200/50 dark:shadow-black/70 hover:shadow-xl hover:-translate-y-1'
+                  : 'bg-stone-100/70 dark:bg-[#172634]/50 border-dashed border-stone-300 dark:border-white/10 opacity-75'
               }`}
             >
               <div>
@@ -121,7 +121,7 @@ export const TransportCards: React.FC<TransportCardsProps> = ({ routeData }) => 
 
                 {/* Badge and Title */}
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <h4 className="font-black text-lg text-[#132238]">{card.name}</h4>
+                  <h4 className="font-black text-lg text-[#132238] dark:text-[#F1EADF]">{card.name}</h4>
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${card.badgeColor}`}>
                     {card.badge}
                   </span>
@@ -129,12 +129,12 @@ export const TransportCards: React.FC<TransportCardsProps> = ({ routeData }) => 
 
                 {/* Duration or Disabled reason */}
                 {card.available ? (
-                  <div className="flex items-center gap-2 text-stone-800 font-bold text-base mt-3">
-                    <Clock className="w-5 h-5 text-[#1FA3A3]" />
+                  <div className="flex items-center gap-2 text-stone-800 dark:text-[#F1EADF] font-bold text-base mt-3">
+                    <Clock className="w-5 h-5 text-[#1FA3A3] dark:text-[#2EC4C1]" />
                     <span>{formatDurationPersian(card.duration)}</span>
                   </div>
                 ) : (
-                  <div className="flex items-center gap-1.5 text-xs text-rose-600 font-bold mt-3 bg-rose-50 p-2 rounded-xl border border-rose-200">
+                  <div className="flex items-center gap-1.5 text-xs text-rose-600 dark:text-rose-400 font-bold mt-3 bg-rose-50 dark:bg-rose-950/50 p-2 rounded-xl border border-rose-200 dark:border-rose-900/50">
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
                     <span>{card.reasonDisabled || 'امکان‌پذیر نیست'}</span>
                   </div>

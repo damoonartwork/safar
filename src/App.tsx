@@ -133,8 +133,8 @@ export const App: React.FC = () => {
   if (citiesLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4">
-        <div className="w-12 h-12 border-4 border-[#1FA3A3] border-t-transparent rounded-full animate-spin mb-4" />
-        <span className="text-base font-bold text-[#132238]">در حال بارگذاری اطلاعات شهرهای ایران...</span>
+        <div className="w-12 h-12 border-4 border-[#1FA3A3] dark:border-[#2EC4C1] border-t-transparent dark:border-t-transparent rounded-full animate-spin mb-4" />
+        <span className="text-base font-bold text-[#132238] dark:text-[#F1EADF]">در حال بارگذاری اطلاعات شهرهای ایران...</span>
       </div>
     );
   }
@@ -142,11 +142,11 @@ export const App: React.FC = () => {
   if (citiesError) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="bg-white p-8 rounded-3xl shadow-xl max-w-md text-center border border-stone-200">
-          <p className="text-rose-600 font-bold mb-4">{citiesError}</p>
+        <div className="bg-white dark:bg-[#172634] p-8 rounded-3xl shadow-xl dark:shadow-black/70 max-w-md text-center border border-stone-200 dark:border-white/10">
+          <p className="text-rose-600 dark:text-rose-400 font-bold mb-4">{citiesError}</p>
           <button
             onClick={() => window.location.reload()}
-            className="px-6 py-2.5 bg-[#1FA3A3] text-white font-bold rounded-xl"
+            className="px-6 py-2.5 bg-[#1FA3A3] dark:bg-[#2EC4C1] text-white dark:text-[#0F1A24] font-bold rounded-xl cursor-pointer"
           >
             تلاش مجدد
           </button>
@@ -156,7 +156,7 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col text-[#132238] font-sans selection:bg-[#1FA3A3] selection:text-white" dir="rtl">
+    <div className="min-h-screen flex flex-col text-[#132238] dark:text-[#F1EADF] font-sans selection:bg-[#1FA3A3] dark:selection:bg-[#2EC4C1] selection:text-white" dir="rtl">
       {/* 1. Sticky Header */}
       <Header />
 

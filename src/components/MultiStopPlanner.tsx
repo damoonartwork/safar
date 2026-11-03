@@ -117,18 +117,18 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
     <section id="multistop" className="py-8 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-stone-200/50 border border-stone-200/80">
+        <div className="bg-white dark:bg-[#172634] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-stone-200/50 dark:shadow-black/70 border border-stone-200/80 dark:border-white/10">
           
           {/* Header */}
           <div className="mb-8">
-            <div className="flex items-center gap-2 text-xs font-bold text-[#1FA3A3] mb-1">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#1FA3A3] dark:text-[#2EC4C1] mb-1">
               <Navigation className="w-4 h-4" />
               برنامه‌ریزی چندمرحله‌ای
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black text-[#132238]">
+            <h3 className="text-2xl sm:text-3xl font-black text-[#132238] dark:text-[#F1EADF]">
               برنامه‌ریز سفر چند مقصدی
             </h3>
-            <p className="text-sm text-stone-500 mt-1">
+            <p className="text-sm text-stone-500 dark:text-[#9FB0BF] mt-1">
               چند شهر را انتخاب کنید و برنامه سفر رؤیایی خود را با ترتیب دلخواه بسازید (حداکثر ۸ توقف).
             </p>
           </div>
@@ -154,17 +154,17 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
                 {stops.map((stop, index) => (
                   <div
                     key={`${stop.id}-${index}`}
-                    className="flex items-center justify-between p-3.5 bg-stone-50 hover:bg-stone-100/80 rounded-2xl border border-stone-200 transition-all duration-200"
+                    className="flex items-center justify-between p-3.5 bg-stone-50 dark:bg-[#1E3142] hover:bg-stone-100/80 dark:hover:bg-[#253d52] rounded-2xl border border-stone-200 dark:border-white/10 transition-all duration-200"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-full bg-[#1FA3A3] text-white flex items-center justify-center text-xs font-black shadow-sm">
+                      <div className="w-7 h-7 rounded-full bg-[#1FA3A3] dark:bg-[#2EC4C1] text-white dark:text-[#0F1A24] flex items-center justify-center text-xs font-black shadow-sm">
                         {toPersianDigits(index + 1)}
                       </div>
                       <div>
-                        <span className="font-bold text-[#132238] text-sm md:text-base">
+                        <span className="font-bold text-[#132238] dark:text-[#F1EADF] text-sm md:text-base">
                           {stop.name}
                         </span>
-                        <span className="text-xs text-stone-400 mr-2">
+                        <span className="text-xs text-stone-400 dark:text-[#9FB0BF] mr-2">
                           ({stop.province})
                         </span>
                       </div>
@@ -176,7 +176,7 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
                         type="button"
                         disabled={index === 0}
                         onClick={() => handleMoveUp(index)}
-                        className="p-1.5 text-stone-400 hover:text-stone-700 disabled:opacity-30 disabled:hover:text-stone-400 rounded-lg hover:bg-stone-200/60"
+                        className="p-1.5 text-stone-400 dark:text-[#9FB0BF] hover:text-stone-700 dark:hover:text-[#F1EADF] disabled:opacity-30 disabled:hover:text-stone-400 rounded-lg hover:bg-stone-200/60 dark:hover:bg-white/10 cursor-pointer"
                         title="انتقال به بالا"
                       >
                         <ArrowUp className="w-4 h-4" />
@@ -187,7 +187,7 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
                         type="button"
                         disabled={index === stops.length - 1}
                         onClick={() => handleMoveDown(index)}
-                        className="p-1.5 text-stone-400 hover:text-stone-700 disabled:opacity-30 disabled:hover:text-stone-400 rounded-lg hover:bg-stone-200/60"
+                        className="p-1.5 text-stone-400 dark:text-[#9FB0BF] hover:text-stone-700 dark:hover:text-[#F1EADF] disabled:opacity-30 disabled:hover:text-stone-400 rounded-lg hover:bg-stone-200/60 dark:hover:bg-white/10 cursor-pointer"
                         title="انتقال به پایین"
                       >
                         <ArrowDown className="w-4 h-4" />
@@ -198,7 +198,7 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
                         type="button"
                         disabled={stops.length <= 2}
                         onClick={() => handleRemoveStop(index)}
-                        className="p-1.5 text-rose-400 hover:text-rose-600 disabled:opacity-30 disabled:hover:text-rose-400 rounded-lg hover:bg-rose-50 mr-1"
+                        className="p-1.5 text-rose-400 hover:text-rose-600 dark:hover:text-rose-300 disabled:opacity-30 disabled:hover:text-rose-400 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 mr-1 cursor-pointer"
                         title="حذف توقف"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -214,11 +214,11 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
                   <select
                     value={selectedCityToAdd}
                     onChange={(e) => setSelectedCityToAdd(e.target.value)}
-                    className="flex-1 px-4 py-2.5 bg-stone-50 border border-stone-200 rounded-2xl text-xs sm:text-sm text-stone-700 focus:outline-none focus:border-[#1FA3A3]"
+                    className="flex-1 px-4 py-2.5 bg-stone-50 dark:bg-[#1E3142] border border-stone-200 dark:border-white/10 rounded-2xl text-xs sm:text-sm text-stone-700 dark:text-[#F1EADF] focus:outline-none focus:border-[#1FA3A3] dark:focus:border-[#2EC4C1]"
                   >
-                    <option value="">یک شهر برای افزودن انتخاب کنید...</option>
+                    <option value="" className="dark:bg-[#172634] dark:text-[#F1EADF]">یک شهر برای افزودن انتخاب کنید...</option>
                     {availableCities.map((c) => (
-                      <option key={c.id} value={c.id}>
+                      <option key={c.id} value={c.id} className="dark:bg-[#172634] dark:text-[#F1EADF]">
                         {c.name} ({c.province})
                       </option>
                     ))}
@@ -228,7 +228,7 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
                     type="button"
                     onClick={handleAddStop}
                     disabled={!selectedCityToAdd}
-                    className="px-4 py-2.5 bg-[#1FA3A3] hover:bg-[#188585] disabled:bg-stone-200 disabled:text-stone-400 text-white font-bold rounded-2xl text-xs sm:text-sm flex items-center gap-1.5 transition active:scale-95 shadow-sm"
+                    className="px-4 py-2.5 bg-[#1FA3A3] dark:bg-[#2EC4C1] hover:bg-[#188585] dark:hover:bg-[#25a9a6] disabled:bg-stone-200 dark:disabled:bg-[#1E3142] disabled:text-stone-400 dark:disabled:text-stone-600 text-white dark:text-[#0F1A24] font-bold rounded-2xl text-xs sm:text-sm flex items-center gap-1.5 transition active:scale-95 shadow-sm cursor-pointer"
                   >
                     <Plus className="w-4 h-4" />
                     <span>افزودن</span>
@@ -237,17 +237,17 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
               )}
 
               {/* Total Summary Footer Box */}
-              <div className="mt-6 p-5 bg-[#FAF7F2] rounded-2xl border border-stone-200/80">
-                <div className="grid grid-cols-2 gap-4 text-center divide-x divide-x-reverse divide-stone-200">
+              <div className="mt-6 p-5 bg-[#FAF7F2] dark:bg-[#1E3142] rounded-2xl border border-stone-200/80 dark:border-white/10">
+                <div className="grid grid-cols-2 gap-4 text-center divide-x divide-x-reverse divide-stone-200 dark:divide-white/10">
                   
                   <div>
-                    <div className="text-xs text-stone-500 mb-1 flex items-center justify-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[#1FA3A3]" />
+                    <div className="text-xs text-stone-500 dark:text-[#9FB0BF] mb-1 flex items-center justify-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[#1FA3A3] dark:text-[#2EC4C1]" />
                       مجموع مسافت کل
                     </div>
-                    <div className="text-xl sm:text-2xl font-black text-[#132238]">
+                    <div className="text-xl sm:text-2xl font-black text-[#132238] dark:text-[#F1EADF]">
                       {isCalculating ? (
-                        <span className="text-stone-400 text-sm">در حال محاسبه...</span>
+                        <span className="text-stone-400 dark:text-[#9FB0BF] text-sm">در حال محاسبه...</span>
                       ) : (
                         `${formatPersianNumber(totalDistanceKm)} کیلومتر`
                       )}
@@ -255,13 +255,13 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
                   </div>
 
                   <div>
-                    <div className="text-xs text-stone-500 mb-1 flex items-center justify-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-[#F26A51]" />
+                    <div className="text-xs text-stone-500 dark:text-[#9FB0BF] mb-1 flex items-center justify-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-[#F26A51] dark:text-[#FF7A5C]" />
                       مجموع زمان رانندگی
                     </div>
-                    <div className="text-xl sm:text-2xl font-black text-[#132238]">
+                    <div className="text-xl sm:text-2xl font-black text-[#132238] dark:text-[#F1EADF]">
                       {isCalculating ? (
-                        <span className="text-stone-400 text-sm">در حال محاسبه...</span>
+                        <span className="text-stone-400 dark:text-[#9FB0BF] text-sm">در حال محاسبه...</span>
                       ) : (
                         formatDurationPersian(totalDurationMinutes)
                       )}
@@ -272,23 +272,23 @@ export const MultiStopPlanner: React.FC<MultiStopPlannerProps> = ({ cities }) =>
 
                 {/* Per-leg mini breakdown */}
                 {legs.length > 0 && (
-                  <div className="mt-4 pt-4 border-t border-stone-200/60 space-y-1.5">
-                    <span className="text-[11px] font-bold text-stone-500 block mb-1">
+                  <div className="mt-4 pt-4 border-t border-stone-200/60 dark:border-white/10 space-y-1.5">
+                    <span className="text-[11px] font-bold text-stone-500 dark:text-[#9FB0BF] block mb-1">
                       جزئیات مراحل سفر:
                     </span>
                     {legs.map((leg, i) => (
                       <div
                         key={i}
-                        className="flex items-center justify-between text-xs text-stone-600 bg-white/70 px-2.5 py-1.5 rounded-lg"
+                        className="flex items-center justify-between text-xs text-stone-600 dark:text-[#F1EADF] bg-white/70 dark:bg-[#172634] px-2.5 py-1.5 rounded-lg border border-stone-200/40 dark:border-white/5"
                       >
                         <span className="font-medium">
                           {toPersianDigits(i + 1)}. {leg.from.name} به {leg.to.name}
                         </span>
                         <div className="flex items-center gap-2">
-                          <span className="font-bold text-[#1FA3A3]">
+                          <span className="font-bold text-[#1FA3A3] dark:text-[#2EC4C1]">
                             {formatPersianNumber(leg.roadDistanceKm)} کم
                           </span>
-                          <span className="text-[10px] text-stone-400">
+                          <span className="text-[10px] text-stone-400 dark:text-[#9FB0BF]">
                             ({formatDurationPersian(leg.durationMinutes)})
                           </span>
                         </div>
